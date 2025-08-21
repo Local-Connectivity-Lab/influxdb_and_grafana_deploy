@@ -42,9 +42,22 @@ cat << EOF > /etc/fluent-bit/fluent-bit.conf
     Name cpu
     Tag cpu
 
+[INPUT]
+    Name mem
+    Tag memory
+
+[INPUT]
+    Name netif
+    Tag network
+    Interface eth0
+
+[INPUT]
+    Name disk
+    Tag disk
+
 [OUTPUT]
     Name influxdb
-    Match cpu
+    Match *
     Host 127.0.0.1
     Port 8086
     Bucket metrics_proxmox_container
