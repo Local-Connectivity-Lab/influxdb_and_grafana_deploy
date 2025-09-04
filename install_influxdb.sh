@@ -10,10 +10,10 @@ if [ -z "${API_KEY:-}" ]; then
   exit 1
 fi
 
-
-wget https://download.influxdata.com/influxdb/releases/influxdb2-2.7.11_linux_amd64.tar.gz
-tar xvfz influxdb2-2.7.11_linux_amd64.tar.gz
-rm influxdb2-2.7.11_linux_amd64.tar.gz
+tar="influxdb2-2.7.12_linux_amd64.tar.gz"
+wget https://download.influxdata.com/influxdb/releases/v2.7.12/$tar
+tar xvfz $tar
+rm $tar
 
 
 cat << EOF > /etc/systemd/system/influxdb.service
@@ -23,7 +23,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/root/influxdb2-2.7.11/usr/bin/influxd --http-bind-address=0.0.0.0:8086
+ExecStart=/root/influxdb2-2.7.12/usr/bin/influxd --http-bind-address=0.0.0.0:8086
 Restart=always
 RestartSec=10
 
