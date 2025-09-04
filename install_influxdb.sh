@@ -10,6 +10,7 @@ if [ -z "${API_KEY:-}" ]; then
   exit 1
 fi
 
+# Check for newest version here https://docs.influxdata.com/influxdb/v2/install/?t=Linux#manually-download-and-install-the-influxd-binary
 tar="influxdb2-2.7.12_linux_amd64.tar.gz"
 wget https://download.influxdata.com/influxdb/releases/v2.7.12/$tar
 tar xvfz $tar
